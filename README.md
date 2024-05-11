@@ -12,7 +12,8 @@
 
 This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
 
-Check the project [here](https://ajela13.github.io/se_project_aroundtheus/index.html)
+- Check the project [here.](https://ajela13.github.io/se_project_aroundtheus/index.html)
+- Check the video [here.](https://drive.google.com/file/d/1aAEvAdN8buWUxuRMrtVeR8DP3yu82nvX/view?usp=sharing)
 
 **Project features**
 
