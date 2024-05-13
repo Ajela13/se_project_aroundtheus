@@ -73,10 +73,6 @@
     width: 282px;
   }
 
-  .profile__edit-button {
-    width: 7.5px;
-    height: 7.5px;
-  }
   .profile__info {
     display: flex;
     flex-wrap: wrap;
