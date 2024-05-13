@@ -60,7 +60,7 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 620px) {
   .profile {
     flex-direction: column;
   }
@@ -70,7 +70,7 @@
 
   .profile__add-button {
     margin: auto;
-    width: 100%;
+    width: 282px;
   }
 
   .profile__info {
