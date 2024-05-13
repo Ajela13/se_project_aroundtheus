@@ -12,6 +12,7 @@
   object-fit: cover;
   background-position: center;
 }
+
 .profile__info {
   display: grid;
   grid-template-areas:
@@ -38,6 +39,7 @@
   width: 24px;
   height: 24px;
   grid-area: button;
+  border: 1px solid #fff;
 }
 
 .profile__edit-button:hover {
@@ -50,6 +52,8 @@
   width: 150px;
   height: 50px;
   margin-left: auto;
+  border: 2px solid #fff;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {
@@ -74,6 +78,7 @@
   .profile {
     flex-direction: column;
   }
+
   .profile__title {
     margin-right: 10px;
   }
