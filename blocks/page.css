@@ -1,10 +1,10 @@
 .page {
-  padding: 0 20px;
   background-color: black;
   color: white;
 }
 
 .page__content {
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
