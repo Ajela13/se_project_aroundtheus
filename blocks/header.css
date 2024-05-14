@@ -8,11 +8,11 @@
 @media screen and (max-width: 480px) {
   .header {
     margin-top: 28px;
-    padding-left: 27px;
     padding-bottom: 32px;
   }
 
   .header__logo {
+    padding-left: 27px;
     width: 126px;
     height: 24px;
   }
