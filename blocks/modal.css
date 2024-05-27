@@ -17,9 +17,11 @@
 .modal__container {
   border-radius: 10px;
   position: relative;
-  padding: 36px;
   background-color: #fff;
   margin: auto;
+  padding: 34px 36px 37px;
+  max-width: 430px;
+  max-height: 330px;
 }
 
 .modal__title {
@@ -52,6 +54,8 @@
 @media screen and (max-width: 621px) {
   .modal__container {
     padding: 25px 22px;
+    max-width: 430px;
+    max-height: 330px;
   }
 
   .modal__close {
