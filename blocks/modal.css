@@ -45,6 +45,10 @@
   cursor: pointer;
 }
 
+.modal__close:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 621px) {
   .modal__container {
     padding: 25px 22px;
