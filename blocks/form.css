@@ -16,6 +16,8 @@
 
 .form__button {
   background: transparent url(../images/submit-button.svg) center no-repeat;
+  font-size: 18px;
+  line-height: 1.2;
   width: 358px;
   height: 50px;
   border: none;
@@ -33,5 +35,6 @@
     width: 238px;
     height: 46px;
     margin-top: 15px;
+    font-size: 14px;
   }
 }
