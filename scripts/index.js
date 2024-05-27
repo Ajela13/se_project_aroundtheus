@@ -74,13 +74,11 @@ function getCardElement(cardData) {
 
 profileEditButton.addEventListener("click", function () {
   profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  profileDescriptionInput.value = profileDescription.textContent.trim();
   profileEditModal.classList.add("modal__opened");
 });
 
-modalCloseButton.addEventListener("click", function () {
-  closePopup();
-});
+modalCloseButton.addEventListener("click", closePopup);
 
 profileEditModal.addEventListener("submit", handleProfileFormSubmit);
 
