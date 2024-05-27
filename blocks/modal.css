@@ -59,12 +59,8 @@
     bottom: calc(100% + 13px);
   }
 
-  .modal__heading {
-    font-family: "Inter", Arial, sans-serif;
-    font-weight: 900;
+  .modal__title {
     font-size: 18px;
-    line-height: 1.2;
-    color: #000;
     margin: 0 0 75px;
   }
 }
