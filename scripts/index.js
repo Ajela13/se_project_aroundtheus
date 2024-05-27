@@ -50,7 +50,7 @@ const cardTemplate =
 // Functions
 
 function closePopup() {
-  profileEditModal.classList.remove("modal__opened");
+  profileEditModal.classList.remove("modal_opened");
 }
 
 function handleProfileFormSubmit(evt) {
@@ -75,7 +75,7 @@ function getCardElement(cardData) {
 profileEditButton.addEventListener("click", function () {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent.trim();
-  profileEditModal.classList.add("modal__opened");
+  profileEditModal.classList.add("modal_opened");
 });
 
 modalCloseButton.addEventListener("click", closePopup);
