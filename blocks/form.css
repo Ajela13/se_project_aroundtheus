@@ -15,7 +15,10 @@
 }
 
 .form__button {
-  background: transparent url(../images/submit-button.svg) center no-repeat;
+  background-color: #000;
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 400;
   font-size: 18px;
   line-height: 1.2;
   width: 358px;
