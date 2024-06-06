@@ -49,6 +49,13 @@
   opacity: 0.6;
 }
 
+::placeholder {
+  color: #c4c4c4;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+}
 @media screen and (max-width: 621px) {
   .modal__container {
     width: 282px;

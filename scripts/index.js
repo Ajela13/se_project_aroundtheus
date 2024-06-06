@@ -41,23 +41,27 @@ const profileTitleInput = document.querySelector("#profile-edit-title");
 const profileDescriptionInput = document.querySelector(
   "#profile-edit-description"
 );
-const modalCloseButton = document.querySelector("#modal-close-button");
+const modalCloseEditButton = document.querySelector("#modal-close-edit-button");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
+const profileAddButton = document.querySelector("#profile-add-button");
+const profileAddModal = document.querySelector("#profile-add-modal");
+const modalCloseAddButton = document.querySelector("#modal-close-add-button");
+
 // Functions
 
-function closePopup() {
-  profileEditModal.classList.remove("modal_opened");
+function closePopup(modal) {
+  modal.classList.remove("modal_opened");
 }
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup();
+  closePopup(profileEditModal);
 }
 
 function getCardElement(cardData) {
@@ -72,13 +76,15 @@ function getCardElement(cardData) {
 }
 // Event Listeners
 
-profileEditButton.addEventListener("click", function () {
+profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent.trim();
   profileEditModal.classList.add("modal_opened");
 });
 
-modalCloseButton.addEventListener("click", closePopup);
+modalCloseEditButton.addEventListener("click", () =>
+  closePopup(profileEditModal)
+);
 
 profileEditModal.addEventListener("submit", handleProfileFormSubmit);
 
@@ -86,3 +92,11 @@ initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 });
+
+profileAddButton.addEventListener("click", () => {
+  profileAddModal.classList.add("modal_opened");
+});
+
+modalCloseAddButton.addEventListener("click", () =>
+  closePopup(profileAddModal)
+);
