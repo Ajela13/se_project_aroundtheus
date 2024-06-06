@@ -57,6 +57,10 @@ function closePopup(modal) {
   modal.classList.remove("modal_opened");
 }
 
+function openPopup(modal) {
+  modal.classList.add("modal_opened");
+}
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
@@ -79,7 +83,7 @@ function getCardElement(cardData) {
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent.trim();
-  profileEditModal.classList.add("modal_opened");
+  openPopup(profileEditModal);
 });
 
 modalCloseEditButton.addEventListener("click", () =>
@@ -93,9 +97,7 @@ initialCards.forEach((cardData) => {
   cardListEl.prepend(cardElement);
 });
 
-profileAddButton.addEventListener("click", () => {
-  profileAddModal.classList.add("modal_opened");
-});
+profileAddButton.addEventListener("click", openPopup(profileAddModal));
 
 modalCloseAddButton.addEventListener("click", () =>
   closePopup(profileAddModal)
