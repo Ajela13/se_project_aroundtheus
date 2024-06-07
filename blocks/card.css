@@ -1,5 +1,6 @@
 .card {
   display: flex;
+  position: relative;
   flex-direction: column;
   list-style-type: none;
   border-radius: 10px;
@@ -10,6 +11,20 @@
   height: 282px;
   border-start-start-radius: 10px;
   border-start-end-radius: 10px;
+}
+
+.card__trash {
+  background: transparent url(../images/trash.svg) center no-repeat;
+  border: none;
+  width: 18px;
+  height: 19.3px;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+.card__trash:hover {
+  opacity: 60%;
 }
 
 .card__description {
