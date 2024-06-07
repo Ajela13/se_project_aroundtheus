@@ -47,3 +47,8 @@
 .card__like-button:hover {
   opacity: 50%;
 }
+
+.card__like-button_active {
+  background: transparent url(../images/like-button-clicked.svg) center
+    no-repeat;
+}

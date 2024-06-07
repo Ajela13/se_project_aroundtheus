@@ -55,6 +55,7 @@ const cardTitleInput = profileAddForm.querySelector("#profile-add-title");
 const cardImageLinkInput = profileAddForm.querySelector(
   "#profile-add-image-link"
 );
+
 // Functions
 
 function closePopup(modal) {
@@ -119,3 +120,11 @@ profileAddModal.addEventListener("submit", handleAddCardFormSubmit);
 modalCloseAddButton.addEventListener("click", () =>
   closePopup(profileAddModal)
 );
+
+const cardLikeButtons = document.querySelectorAll(".card__like-button");
+
+cardLikeButtons.forEach((LikeButton) => {
+  LikeButton.addEventListener("click", () => {
+    LikeButton.classList.toggle("card__like-button_active");
+  });
+});
