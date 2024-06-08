@@ -56,6 +56,46 @@
   font-size: 14px;
   line-height: 1.2;
 }
+
+.modal__container_preview {
+  position: relative;
+  margin: auto;
+}
+
+.modal__close-preview {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+  width: 40px;
+  height: 40px;
+  background-image: url(../images/close-Icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.modal__close-preview:hover {
+  opacity: 0.6;
+}
+
+.modal__image {
+  max-width: 75vw;
+  max-height: 75vh;
+  margin: auto;
+}
+
+.preview_modal_description {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+  height: 12px;
+  size: 12px;
+  text-align: start;
+  margin: 10px auto;
+}
+
 @media screen and (max-width: 621px) {
   .modal__container {
     width: 282px;
@@ -71,5 +111,10 @@
   .modal__heading {
     font-size: 18px;
     margin: 25px 22px 75px;
+  }
+
+  .modal__close-preview {
+    width: 30px;
+    height: 30px;
   }
 }
