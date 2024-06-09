@@ -121,6 +121,7 @@ function handleAddCardFormSubmit(evt) {
   const link = cardImageLinkInput.value;
   renderCard({ name, link });
   closePopup(profileAddModal);
+  profileAddForm.reset();
 }
 
 // Event Listeners
