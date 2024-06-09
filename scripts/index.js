@@ -82,9 +82,9 @@ function handleProfileFormSubmit(evt) {
   closePopup(profileEditModal);
 }
 
-function renderCard(cardData) {
+function renderCard(cardData, method = "prepend") {
   const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
+  cardListEl[method](cardElement);
 }
 
 function getCardElement(cardData) {
