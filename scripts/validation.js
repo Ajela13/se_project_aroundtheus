@@ -5,7 +5,7 @@ const hideInputError = (
 ) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(inputErrorClass);
-  errorElement.textContent = inputElement.validationMessage;
+  errorElement.textContent = "";
   errorElement.classList.remove(errorClass);
 };
 
@@ -28,13 +28,38 @@ const checkInputValidity = (formElement, inputElement, config) => {
   }
 };
 
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
+
+const toggleButtonState = (
+  inputList,
+  buttonElement,
+  { inactiveButtonClass }
+) => {
+  console.log(hasInvalidInput(inputList));
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.disabled = true;
+  } else {
+    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.disabled = false;
+  }
+};
+
 const setEventListener = (formElement, config) => {
   const { inputSelector } = config;
+  const { submitButtonSelector } = config;
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const buttonElement = formElement.querySelector(submitButtonSelector);
+  toggleButtonState(inputList, buttonElement, config);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(formElement, inputElement, config);
+      toggleButtonState(inputList, buttonElement, config);
     });
   });
 };
