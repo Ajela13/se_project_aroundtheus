@@ -45,3 +45,27 @@
     font-size: 14px;
   }
 }
+
+.form__error_visible {
+  color: #ff0000;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  width: 164px;
+  height: 12px;
+}
+
+.form__button_disabled {
+  cursor: not-allowed;
+  opacity: 0.2;
+}
+
+.form__button_disabled:hover {
+  cursor: not-allowed;
+  opacity: 0.2;
+}
+
+.form__input_type_error {
+  border-bottom: solid 1px #ff0000;
+}
