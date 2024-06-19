@@ -1,3 +1,14 @@
+const setEventListener = (formElement, config) => {
+  const { inputSelector } = config;
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", () => {
+      checkInputValidity(formElement, inputElement);
+    });
+  });
+};
+
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
