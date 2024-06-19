@@ -1,10 +1,40 @@
+const hideInputError = (
+  formElement,
+  inputElement,
+  { inputErrorClass, errorClass }
+) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove(inputErrorClass);
+  errorElement.textContent = inputElement.validationMessage;
+  errorElement.classList.remove(errorClass);
+};
+
+const showInputError = (
+  formElement,
+  inputElement,
+  { inputErrorClass, errorClass }
+) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add(inputErrorClass);
+  errorElement.textContent = inputElement.validationMessage;
+  errorElement.classList.add(errorClass);
+};
+
+const checkInputValidity = (formElement, inputElement, config) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, config);
+  } else {
+    hideInputError(formElement, inputElement, config);
+  }
+};
+
 const setEventListener = (formElement, config) => {
   const { inputSelector } = config;
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
-      checkInputValidity(formElement, inputElement);
+      checkInputValidity(formElement, inputElement, config);
     });
   });
 };
