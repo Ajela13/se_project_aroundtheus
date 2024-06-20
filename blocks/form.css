@@ -49,10 +49,6 @@
   }
 }
 
-.form__error {
-  padding-top: 5px;
-}
-
 .form__error_visible {
   color: #ff0000;
   font-family: "Inter", Arial, sans-serif;
