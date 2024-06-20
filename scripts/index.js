@@ -148,3 +148,9 @@ closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
   button.addEventListener("click", () => closeModal(modal));
 });
+
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    closeModal(profileEditModal) || closeModal(profileAddModal);
+  }
+});
