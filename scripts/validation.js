@@ -34,6 +34,16 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
+const disableButton = (buttonElement, inactiveButtonClass) => {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.disabled = true;
+};
+
+const enableButton = (buttonElement, inactiveButtonClass) => {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.disabled = false;
+};
+
 const toggleButtonState = (
   inputList,
   buttonElement,
@@ -41,11 +51,9 @@ const toggleButtonState = (
 ) => {
   console.log(hasInvalidInput(inputList));
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.disabled = true;
+    disableButton(buttonElement, inactiveButtonClass);
   } else {
-    buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.disabled = false;
+    enableButton(buttonElement, inactiveButtonClass);
   }
 };
 
