@@ -154,3 +154,9 @@ document.addEventListener("keydown", (evt) => {
     closeModal(profileEditModal) || closeModal(profileAddModal);
   }
 });
+
+document.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("modal")) {
+    closeModal(profileEditModal) || closeModal(profileAddModal);
+  }
+});
