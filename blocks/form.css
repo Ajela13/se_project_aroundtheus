@@ -58,12 +58,10 @@
 
 .form__button_disabled {
   cursor: not-allowed;
+  color: #000;
   opacity: 0.2;
-}
-
-.form__button_disabled:hover {
-  cursor: not-allowed;
-  opacity: 0.2;
+  background-color: #fff;
+  border: 1px #000 solid;
 }
 
 .form__input_type_error {
