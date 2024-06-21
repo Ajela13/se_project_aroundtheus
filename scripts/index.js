@@ -67,12 +67,31 @@ const previewImageDescription = previewImageModal.querySelector(
 
 // Functions
 
+function handleEscapeKey(evt) {
+  if (evt.key === "Escape") {
+    const modal = document.querySelector(".modal_opened");
+    if (modal) {
+      closeModal(modal);
+    }
+  }
+}
+
+function handleClickOverlay(evt) {
+  if (evt.target.classList.contains("modal")) {
+    closeModal(evt.target);
+  }
+}
+
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscapeKey);
+  modal.removeEventListener("click", handleEscapeKey);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscapeKey);
+  modal.addEventListener("click", handleClickOverlay);
 }
 
 function handleProfileFormSubmit(evt) {
@@ -145,20 +164,4 @@ const closeButtons = document.querySelectorAll(".modal__close");
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
   button.addEventListener("click", () => closeModal(modal));
-});
-
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    closeModal(profileEditModal) ||
-      closeModal(profileAddModal) ||
-      closeModal(previewImageModal);
-  }
-});
-
-document.addEventListener("click", (evt) => {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(profileEditModal) ||
-      closeModal(profileAddModal) ||
-      closeModal(previewImageModal);
-  }
 });
