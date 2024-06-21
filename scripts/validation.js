@@ -58,8 +58,7 @@ const toggleButtonState = (
 };
 
 const setEventListener = (formElement, config) => {
-  const { inputSelector } = config;
-  const { submitButtonSelector } = config;
+  const { inputSelector, submitButtonSelector } = config;
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   const buttonElement = formElement.querySelector(submitButtonSelector);
   toggleButtonState(inputList, buttonElement, config);
@@ -73,7 +72,8 @@ const setEventListener = (formElement, config) => {
 };
 
 const enableValidation = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  const { formSelector } = config;
+  const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
