@@ -140,8 +140,6 @@ profileAddButton.addEventListener("click", () => openModal(profileAddModal));
 
 profileAddModal.addEventListener("submit", handleAddCardFormSubmit);
 
-const cardLikeButtons = document.querySelectorAll(".card__like-button");
-
 const closeButtons = document.querySelectorAll(".modal__close");
 
 closeButtons.forEach((button) => {
