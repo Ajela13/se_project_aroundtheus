@@ -79,6 +79,8 @@ const validationConfig = {
 const editFormValidator = new FormValidator(validationConfig, profileEditForm);
 const addFormValidator = new FormValidator(validationConfig, profileAddForm);
 
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 // Functions
 
 function handleEscapeKey(evt) {
