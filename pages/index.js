@@ -180,5 +180,18 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closeModal(modal));
 });
 
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    closeModal(profileEditModal) ||
+      closeModal(profileAddModal) ||
+      closeModal(previewImageModal);
+  }
+});
+
+document.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("modal")) {
+    closeModal(profileEditModal) ||
+      closeModal(profileAddModal) ||
+      closeModal(previewImageModal);
+  }
+});
