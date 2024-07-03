@@ -1,4 +1,5 @@
 import FormValidator from "../components/FormValidator.js";
+import Card from "../components/Cards.js";
 
 const initialCards = [
   {
@@ -48,7 +49,6 @@ const profileEditForm = document.forms["modal-edit-form"];
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
-
 const profileAddButton = document.querySelector("#profile-add-button");
 const profileAddModal = document.querySelector("#profile-add-modal");
 const modalCloseAddButton = document.querySelector("#modal-close-add-button");
@@ -117,37 +117,17 @@ function handleProfileFormSubmit(evt) {
   closeModal(profileEditModal);
 }
 
+const handleImageClick = () => {
+  previewImage.src = cardData.link;
+  previewImageDescription.textContent = cardData.name;
+  previewImage.alt = cardData.name;
+  openModal(previewImageModal);
+};
+
 function renderCard(cardData, method = "prepend") {
-  const cardElement = getCardElement(cardData);
+  const card = new Card(cardData, cardTemplate, handleImageClick);
+  const cardElement = card.getCardElement();
   cardListEl[method](cardElement);
-}
-
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardNameEl = cardElement.querySelector(".card__description-name");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__trash");
-
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  cardImageEl.addEventListener("click", () => {
-    previewImage.src = cardData.link;
-    previewImageDescription.textContent = cardData.name;
-    previewImage.alt = cardData.name;
-    openModal(previewImageModal);
-  });
-
-  cardNameEl.textContent = cardData.name;
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.alt;
-  return cardElement;
 }
 
 function handleAddCardFormSubmit(evt) {
