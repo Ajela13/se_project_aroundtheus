@@ -1,5 +1,5 @@
 import FormValidator from "../components/FormValidator.js";
-import Card from "../components/Cards.js";
+import Card from "../components/Card.js";
 
 const initialCards = [
   {
@@ -67,6 +67,8 @@ const previewImageDescription = previewImageModal.querySelector(
   ".preview_modal_description"
 );
 
+// Validation
+
 const validationConfig = {
   formSelector: ".form",
   inputSelector: ".form__input",
@@ -76,11 +78,21 @@ const validationConfig = {
   errorClass: "form__error_visible",
 };
 
-const editFormValidator = new FormValidator(validationConfig, profileEditForm);
-const addFormValidator = new FormValidator(validationConfig, profileAddForm);
+const formValidators = {};
 
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    const formName = formElement.getAttribute("name");
+
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(validationConfig);
+
 // Functions
 
 function handleEscapeKey(evt) {
