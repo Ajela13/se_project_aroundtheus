@@ -30,6 +30,7 @@ export default class Card {
   }
 
   _handleDeleteButton() {
+    this._cardElement.remove();
     this._cardElement = null;
   }
 
@@ -41,7 +42,6 @@ export default class Card {
     this._cardImageElement.src = this._link;
     this._cardNameEl.textContent = this._name;
     this._cardImageElement.alt = this._alt;
-
     this._setEventListeners();
 
     return this._cardElement;
