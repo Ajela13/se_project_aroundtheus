@@ -4,9 +4,10 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.alt;
-    this._cardSelector = cardSelector;
+    this._cardSelector =
+      document.querySelector(cardSelector).content.firstElementChild;
     this._handleImageClick = handleImageClick;
-    this._cardElement = cardSelector.cloneNode(true);
+    this._cardElement = this._cardSelector.cloneNode(true);
     this._cardImageElement = this._cardElement.querySelector(".card__image");
     this._cardNameEl = this._cardElement.querySelector(
       ".card__description-name"
