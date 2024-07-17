@@ -80,7 +80,6 @@ export default class FormValidator {
       evt.preventDefault();
       this._formElement.reset();
       this._disableButton();
-      console.log("f");
     });
     this._setEventListener();
   }
