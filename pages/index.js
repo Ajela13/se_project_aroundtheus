@@ -4,58 +4,23 @@ import Section from "../components/Section.js";
 import ModalWithForm from "../components/ModalWithForm.js";
 import ModalWithImage from "../components/ModalWithImage.js";
 import UserInfo from "../components/UserInfo.js";
-
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-    alt: "Yosemite picture",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-    alt: "Lake picture",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-    alt: "Bald picture",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-    alt: "Latemar picture",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-    alt: "Vanoise picture",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-    alt: "Lago picture",
-  },
-];
-
-// Elements
-
-const profileEditButton = document.querySelector("#profile-edit-button");
+import {
+  initialCards,
+  profileEditButton,
+  profileTitleInput,
+  profileDescriptionInput,
+  profileAddButton,
+  profileAddForm,
+} from "../utils/constants.js";
 
 const userInfoClass = new UserInfo("#profile-title", "#profile-description");
-const profileTitleInput = document.querySelector("#profile-edit-title");
-const profileDescriptionInput = document.querySelector(
-  "#profile-edit-description"
+const profileAddModalClass = new ModalWithForm(
+  "#profile-add-modal",
+  handleAddCardFormSubmit
 );
 const profileEditModalClass = new ModalWithForm(
   "#profile-edit-modal",
   handleProfileFormSubmit
-);
-const profileAddButton = document.querySelector("#profile-add-button");
-const profileAddForm = document.forms["modal-add-form"];
-const profileAddModalClass = new ModalWithForm(
-  "#profile-add-modal",
-  handleAddCardFormSubmit
 );
 
 const previewImageModalClass = new ModalWithImage("#preview_image_modal");
