@@ -12,6 +12,7 @@ import {
   profileAddButton,
   profileAddForm,
 } from "../utils/constants.js";
+import "./index.css";
 
 const userInfoClass = new UserInfo("#profile-title", "#profile-description");
 const profileAddModalClass = new ModalWithForm(
