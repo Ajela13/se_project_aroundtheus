@@ -11,6 +11,7 @@ import {
   profileDescriptionInput,
   profileAddButton,
   profileAddForm,
+  validationConfig,
 } from "../utils/constants.js";
 import "./index.css";
 
