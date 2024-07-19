@@ -43,9 +43,13 @@ function handleImageClick(cardData) {
   previewImageModalClass.open(cardData);
 }
 
+function createCard(item) {
+  const cardElement = new Card(item, "#card-template", handleImageClick);
+  return cardElement.getCardElement();
+}
+
 function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.getCardElement();
+  const cardElement = createCard(cardData);
   sectionClass.addItem(cardElement);
 }
 
@@ -70,12 +74,6 @@ profileEditModalClass.setEventListeners();
 profileAddButton.addEventListener("click", () => profileAddModalClass.open());
 
 profileAddModalClass.setEventListeners();
-
-const closeButtons = document.querySelectorAll(".modal__close");
-
-closeButtons.forEach((button) => {
-  button.closest(".modal");
-});
 
 previewImageModalClass.setEventListeners();
 
