@@ -19,4 +19,11 @@ export default class Api {
       return Promise.reject(`Error: ${res.status}`);
     };
   }
+
+  getUserInfo() {
+    console.log("fuck");
+    return this._request(`${this.baseUrl}/users/me`, {
+      headers: this.header,
+    });
+  }
 }
