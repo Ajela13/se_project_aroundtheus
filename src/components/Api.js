@@ -63,4 +63,11 @@ export default class Api {
       method: "DELETE",
     });
   }
+
+  likeCard(cardId) {
+    return this._request(`${this.baseUrl}/cards/${cardId}/likes`, {
+      headers: this.header,
+      method: "PUT",
+    });
+  }
 }
