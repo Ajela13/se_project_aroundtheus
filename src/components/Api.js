@@ -42,4 +42,10 @@ export default class Api {
       body: JSON.stringify({ avatar }),
     });
   }
+
+  getInitialCards() {
+    return this._request(`${this.baseUrl}/cards`, {
+      headers: this.header,
+    });
+  }
 }
