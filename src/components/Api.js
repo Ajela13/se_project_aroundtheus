@@ -6,4 +6,17 @@ export default class Api {
       "Content-Type": "application/json",
     };
   }
+
+  _request(url, options) {
+    return fetch(url, options).then(this._checkRes);
+  }
+
+  _checkRes() {
+    (res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    };
+  }
 }
