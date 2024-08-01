@@ -26,4 +26,12 @@ export default class Api {
       headers: this.header,
     });
   }
+
+  updateProfileInfo(name, about) {
+    return this._request(`${this.baseUrl}/users/me`, {
+      headers: this.header,
+      method: "PATCH",
+      body: JSON.stringify({ name, about }),
+    });
+  }
 }
