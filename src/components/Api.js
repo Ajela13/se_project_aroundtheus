@@ -56,4 +56,11 @@ export default class Api {
       body: JSON.stringify({ name, link }),
     });
   }
+
+  deleteCard(cardId) {
+    return this._request(`${this.baseUrl}/cards/${cardId}`, {
+      headers: this.header,
+      method: "DELETE",
+    });
+  }
 }
