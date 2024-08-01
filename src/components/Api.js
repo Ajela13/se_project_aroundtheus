@@ -21,7 +21,6 @@ export default class Api {
   }
 
   getUserInfo() {
-    console.log("fuck");
     return this._request(`${this.baseUrl}/users/me`, {
       headers: this.header,
     });
