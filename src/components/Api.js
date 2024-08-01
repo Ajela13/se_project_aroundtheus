@@ -48,4 +48,12 @@ export default class Api {
       headers: this.header,
     });
   }
+
+  createCard(name, link) {
+    return this._request(`${this.baseUrl}/cards`, {
+      headers: this.header,
+      method: "POST",
+      body: JSON.stringify({ name, link }),
+    });
+  }
 }
