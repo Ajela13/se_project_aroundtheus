@@ -42,10 +42,16 @@ api
     console.error("Error fetching user info:", error);
   });
 
+let sectionClass = new Section(
+  { items: initialCards, renderer: createCard },
+  ".cards__list"
+);
+sectionClass.renderItems();
+
 api
   .getInitialCards()
   .then((cardList) => {
-    const sectionClass = new Section(
+    sectionClass = new Section(
       { items: cardList, renderer: createCard },
       ".cards__list"
     );
@@ -71,6 +77,22 @@ function handleProfileFormSubmit(formData) {
     });
 }
 
+//POST API
+function handleAddCardFormSubmit(obj) {
+  const name = obj["title"];
+  const link = obj["Image-link"];
+  api
+    .postCard(name, link)
+    .then((card) => {
+      sectionClass.addItem(card);
+      profileAddForm.reset();
+      console.log(card);
+    })
+    .catch((error) => {
+      console.error("Error fetching user info:", error);
+    });
+}
+
 //Functions
 function handleImageClick(cardData) {
   previewImageModalClass.open(cardData);
@@ -79,13 +101,6 @@ function handleImageClick(cardData) {
 function createCard(item) {
   const cardElement = new Card(item, "#card-template", handleImageClick);
   return cardElement.getCardElement();
-}
-
-function handleAddCardFormSubmit(obj) {
-  const name = obj["title"];
-  const link = obj["Image-link"];
-  renderCard({ name, link });
-  profileAddForm.reset();
 }
 
 // Event Listeners
