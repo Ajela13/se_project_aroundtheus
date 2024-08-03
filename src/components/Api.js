@@ -46,7 +46,7 @@ export default class Api {
     });
   }
 
-  createCard(name, link) {
+  postCard(name, link) {
     return this._request(`${this.baseUrl}/cards`, {
       headers: this.header,
       method: "POST",

@@ -4,6 +4,7 @@ import Section from "../components/Section.js";
 import ModalWithForm from "../components/ModalWithForm.js";
 import ModalWithImage from "../components/ModalWithImage.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 import {
   initialCards,
   profileEditButton,
@@ -15,6 +16,7 @@ import {
 } from "../utils/constants.js";
 import "./index.css";
 
+const api = new Api();
 const userInfoClass = new UserInfo("#profile-title", "#profile-description");
 const profileAddModalClass = new ModalWithForm(
   "#profile-add-modal",
@@ -27,18 +29,49 @@ const profileEditModalClass = new ModalWithForm(
 
 const previewImageModalClass = new ModalWithImage("#preview_image_modal");
 
-// Functions
+// GET API
 
-const sectionClass = new Section(
-  { items: initialCards, renderer: renderCard },
-  ".cards__list"
-);
-sectionClass.renderItems();
+api
+  .getUserInfo()
+  .then((data) => {
+    userInfoClass.setUserInfo({ title: data.name, description: data.about });
+    console.log(data);
+    return data;
+  })
+  .catch((error) => {
+    console.error("Error fetching user info:", error);
+  });
 
+api
+  .getInitialCards()
+  .then((cardList) => {
+    const sectionClass = new Section(
+      { items: cardList, renderer: createCard },
+      ".cards__list"
+    );
+    sectionClass.renderItems();
+    console.log(cardList);
+  })
+  .catch((error) => {
+    console.error("Error fetching user info:", error);
+  });
+
+// PATCH API
 function handleProfileFormSubmit(formData) {
-  userInfoClass.setUserInfo(formData);
+  console.log(formData);
+  api
+    .updateProfileInfo(formData.title, formData.description)
+    .then((data) => {
+      userInfoClass.setUserInfo({ title: data.name, description: data.about });
+      console.log(data);
+      return data;
+    })
+    .catch((error) => {
+      console.error("Error fetching user info:", error);
+    });
 }
 
+//Functions
 function handleImageClick(cardData) {
   previewImageModalClass.open(cardData);
 }
@@ -46,11 +79,6 @@ function handleImageClick(cardData) {
 function createCard(item) {
   const cardElement = new Card(item, "#card-template", handleImageClick);
   return cardElement.getCardElement();
-}
-
-function renderCard(cardData) {
-  const cardElement = createCard(cardData);
-  sectionClass.addItem(cardElement);
 }
 
 function handleAddCardFormSubmit(obj) {
