@@ -42,11 +42,7 @@ api
     console.error("Error fetching user info:", error);
   });
 
-let sectionClass = new Section(
-  { items: initialCards, renderer: createCard },
-  ".cards__list"
-);
-sectionClass.renderItems();
+let sectionClass;
 
 api
   .getInitialCards()
@@ -93,13 +89,31 @@ function handleAddCardFormSubmit(obj) {
     });
 }
 
+//DELETE API
+function handleDeleteCard(card) {
+  api
+    .deleteCard(card._id)
+    .then((data) => {
+      card.handleDeleteButton();
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Error fetching user info:", error);
+    });
+}
+
 //Functions
 function handleImageClick(cardData) {
   previewImageModalClass.open(cardData);
 }
 
 function createCard(item) {
-  const cardElement = new Card(item, "#card-template", handleImageClick);
+  const cardElement = new Card(
+    item,
+    "#card-template",
+    handleImageClick,
+    handleDeleteCard
+  );
   return cardElement.getCardElement();
 }
 
