@@ -37,6 +37,10 @@
   margin: 34px 0 54px 36px;
 }
 
+.modal__heading_confirmation {
+  margin: 34px 36px 18px;
+}
+
 .modal__close {
   border: none;
   background-color: transparent;
@@ -88,21 +92,6 @@
   margin: 10px auto;
 }
 
-.modal__button {
-  background-color: #000;
-  color: #fff;
-  font-family: "Inter", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.2;
-  width: 358px;
-  height: 50px;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-  margin: 0px 36px 36px;
-}
-
 @media screen and (max-width: 621px) {
   .modal__container {
     width: 282px;
@@ -113,13 +102,6 @@
     height: 26px;
     left: 245px;
     bottom: calc(100% + 21px);
-  }
-
-  .modal__button {
-    width: 238px;
-    height: 46px;
-    margin: 5px 5px 25px 25px;
-    font-size: 14px;
   }
 
   .modal__close-preview {
