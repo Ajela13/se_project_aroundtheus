@@ -123,6 +123,29 @@
       </div>
     </div>
 
+    <div class="modal" id="profile-edit-avatar-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="modal-edit-avatar-button"
+          type="button"
+        ></button>
+        <h2 class="modal__heading">Change profile picture</h2>
+        <form class="modal__form form" name="modal-edit-avatar-form">
+          <input
+            class="form__input"
+            id="profile-edit-avatar-link"
+            type="url"
+            name="Image-link"
+            placeholder="Image link"
+            required
+          />
+          <span class="form__error profile-add-title-error"></span>
+          <button class="form__button" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+
     <div class="modal" id="preview_image_modal">
       <div class="modal__container_preview">
         <button
