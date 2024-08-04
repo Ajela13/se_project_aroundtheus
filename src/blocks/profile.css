@@ -5,12 +5,38 @@
   padding-top: 40px;
 }
 
+.profile__avatar-button {
+  border: 0;
+  padding: 0;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  position: relative;
+  background: transparent;
+}
+
+.profile__avatar-button:hover .profile__avatar-edit {
+  visibility: visible;
+}
+.profile__avatar-button:hover .profile__avatar {
+  opacity: 0.2;
+}
+
 .profile__avatar {
   height: 120px;
   width: 120px;
   border-radius: 50%;
   object-fit: cover;
   background-position: center;
+}
+
+.profile__avatar-edit {
+  position: absolute;
+  left: 47px;
+  top: 47px;
+  height: 26px;
+  width: 26px;
+  visibility: hidden;
 }
 
 .profile__info {
