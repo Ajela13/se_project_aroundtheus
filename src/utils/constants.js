@@ -42,6 +42,9 @@ export const profileDescriptionInput = document.querySelector(
 export const profileAddButton = document.querySelector("#profile-add-button");
 export const profileAddForm = document.forms["modal-add-form"];
 
+export const profileEditAvatarButton = document.querySelector(
+  "#profile-edit-avatar-button"
+);
 // Validation
 
 export const validationConfig = {

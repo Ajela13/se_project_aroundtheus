@@ -16,7 +16,10 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <button class="profile__avatar-button">
+          <button
+            class="profile__avatar-button"
+            id="profile-edit-avatar-button"
+          >
             <img
               src="<%=require('./images/jacques-cousteau.jpg')%>"
               alt="Avatar"
@@ -140,7 +143,7 @@
             placeholder="Image link"
             required
           />
-          <span class="form__error profile-add-title-error"></span>
+          <span class="form__error profile-edit-avatar-link-error"></span>
           <button class="form__button" type="submit">Save</button>
         </form>
       </div>

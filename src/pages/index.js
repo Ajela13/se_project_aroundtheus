@@ -13,6 +13,7 @@ import {
   profileAddButton,
   profileAddForm,
   validationConfig,
+  profileEditAvatarButton,
 } from "../utils/constants.js";
 import "./index.css";
 
@@ -25,6 +26,10 @@ const profileAddModalClass = new ModalWithForm(
 const profileEditModalClass = new ModalWithForm(
   "#profile-edit-modal",
   handleProfileFormSubmit
+);
+const profileEditAvatarModalClass = new ModalWithForm(
+  "#profile-edit-avatar-modal",
+  handleProfileAvatar
 );
 
 const previewImageModalClass = new ModalWithImage("#preview_image_modal");
@@ -89,6 +94,9 @@ function handleAddCardFormSubmit(obj) {
     });
 }
 
+function handleProfileAvatar() {
+  console.log("hedhje");
+}
 //DELETE API
 function handleDeleteCard(card) {
   api
@@ -151,6 +159,12 @@ profileEditModalClass.setEventListeners();
 profileAddButton.addEventListener("click", () => profileAddModalClass.open());
 
 profileAddModalClass.setEventListeners();
+
+profileEditAvatarButton.addEventListener("click", () =>
+  profileEditAvatarModalClass.open()
+);
+
+profileEditAvatarModalClass.setEventListeners();
 
 previewImageModalClass.setEventListeners();
 
