@@ -102,6 +102,25 @@ function handleDeleteCard(card) {
     });
 }
 
+//PUT API / DELETE
+function handleLikeCard(card) {
+  console.log(card._isLiked);
+  if (card._isLiked) {
+    api.dislikeCard(card._id).then((data) => {
+      card.handleLikeButton(false);
+      console.log(data);
+    });
+    //dislike
+  } else {
+    api.likeCard(card._id).then((data) => {
+      card.handleLikeButton(true);
+      console.log(data);
+    });
+
+    console.log("like it");
+  }
+}
+
 //Functions
 function handleImageClick(cardData) {
   previewImageModalClass.open(cardData);
@@ -112,7 +131,8 @@ function createCard(item) {
     item,
     "#card-template",
     handleImageClick,
-    handleDeleteCard
+    handleDeleteCard,
+    handleLikeCard
   );
   return cardElement.getCardElement();
 }
