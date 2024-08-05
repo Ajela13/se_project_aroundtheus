@@ -4,6 +4,7 @@ export default class ModalWithForm extends Modal {
   constructor(modalSelector, handleFormSubmit) {
     super(modalSelector);
     this._modalForm = this._modal.querySelector(".modal__form");
+    this._modalButton = this._modal.querySelector(".form__button");
     this._handleFormSubmit = handleFormSubmit;
     this._inputList = this._modalForm.querySelectorAll(".form__input");
   }
@@ -16,6 +17,14 @@ export default class ModalWithForm extends Modal {
     });
 
     return formValues;
+  }
+
+  setLoading(isLoading, text) {
+    if (isLoading) {
+      this._modalButton.textContent = "Saving...";
+    } else {
+      this._modalButton.textContent = text;
+    }
   }
 
   setEventListeners() {
