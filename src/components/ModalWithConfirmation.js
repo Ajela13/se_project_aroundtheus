@@ -4,8 +4,6 @@ export default class ModalWithConfirmation extends Modal {
   constructor(modalSelector) {
     super(modalSelector);
     this._confirmationModalForm = this._modal.querySelector(".modal__form");
-    this._confirmationButton =
-      this._confirmationModalForm.querySelector("form__button");
   }
   setSubmitAction(Action) {
     this._submitAction = Action;
