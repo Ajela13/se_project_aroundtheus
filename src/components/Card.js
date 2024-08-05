@@ -64,4 +64,12 @@ export default class Card {
     this._updateLikeIcon();
     return this._cardElement;
   }
+
+  getId() {
+    return this._id;
+  }
+
+  isLiked() {
+    return this._isLiked;
+  }
 }

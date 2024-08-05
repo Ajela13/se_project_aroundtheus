@@ -160,19 +160,25 @@ function handleDeleteCard(card) {
 
 //PUT API / DELETE
 function handleLikeCard(card) {
-  if (card._isLiked) {
-    api.dislikeCard(card._id).then((data) => {
-      card.handleLikeButton(false).catch((err) => {
-        console.error("Error fetching user info:", error);
+  if (card.isLiked()) {
+    api
+      .dislikeCard(card.getId())
+      .then((data) => {
+        card.handleLikeButton(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching user info:", err);
       });
-    });
     //dislike
   } else {
-    api.likeCard(card._id).then((data) => {
-      card.handleLikeButton(true).catch((err) => {
-        console.error("Error fetching user info:", error);
+    api
+      .likeCard(card.getId())
+      .then(() => {
+        card.handleLikeButton(true);
+      })
+      .catch((err) => {
+        console.error("Error fetching user info:", err);
       });
-    });
   }
 }
 
