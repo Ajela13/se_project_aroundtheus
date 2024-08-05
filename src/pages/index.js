@@ -16,6 +16,7 @@ import {
   profileEditAvatarButton,
 } from "../utils/constants.js";
 import "./index.css";
+import ModalWithConfirmation from "../components/ModalWithConfirmation.js";
 
 const api = new Api();
 const userInfoClass = new UserInfo("#profile-title", "#profile-description");
@@ -32,6 +33,7 @@ const profileEditAvatarModalClass = new ModalWithForm(
   handleProfileAvatar
 );
 
+const confirmationModalClass = new ModalWithConfirmation("#confirmation-modal");
 const previewImageModalClass = new ModalWithImage("#preview_image_modal");
 
 // GET API
@@ -99,15 +101,18 @@ function handleProfileAvatar() {
 }
 //DELETE API
 function handleDeleteCard(card) {
-  api
-    .deleteCard(card._id)
-    .then((data) => {
-      card.handleDeleteButton();
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("Error fetching user info:", error);
-    });
+  confirmationModalClass.open();
+  confirmationModalClass.setSubmitAction(() => {
+    api
+      .deleteCard(card._id)
+      .then((data) => {
+        card.handleDeleteButton();
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching user info:", error);
+      });
+  });
 }
 
 //PUT API / DELETE
@@ -165,6 +170,8 @@ profileEditAvatarButton.addEventListener("click", () =>
 );
 
 profileEditAvatarModalClass.setEventListeners();
+
+confirmationModalClass.setEventListeners();
 
 previewImageModalClass.setEventListeners();
 
