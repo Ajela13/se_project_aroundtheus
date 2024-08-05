@@ -53,6 +53,7 @@ api
     userInfoClass.setUserAvatar({
       avatar: data.avatar,
     });
+
     return data;
   })
   .catch((error) => {
@@ -81,6 +82,8 @@ function handleProfileFormSubmit(formData) {
     .updateProfileInfo(formData.title, formData.description)
     .then((data) => {
       userInfoClass.setUserInfo({ title: data.name, description: data.about });
+      profileEditModalClass.close();
+
       return data;
     })
     .catch((error) => {
@@ -101,6 +104,7 @@ function handleProfileAvatar(formData) {
       userInfoClass.setUserAvatar({
         avatar: data.avatar,
       });
+      profileEditAvatarModalClass.close();
       return data;
     })
     .catch((error) => {
@@ -122,6 +126,7 @@ function handleAddCardFormSubmit(obj) {
     .postCard(name, link)
     .then((card) => {
       sectionClass.addItem(card);
+      profileAddModalClass.close();
     })
     .catch((error) => {
       console.error("Error fetching user info:", error);
