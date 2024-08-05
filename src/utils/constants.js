@@ -34,6 +34,7 @@ export const initialCards = [
 // Elements
 
 export const profileEditButton = document.querySelector("#profile-edit-button");
+export const profileEditForm = document.forms["modal-edit-form"];
 
 export const profileTitleInput = document.querySelector("#profile-edit-title");
 export const profileDescriptionInput = document.querySelector(
@@ -45,6 +46,13 @@ export const profileAddForm = document.forms["modal-add-form"];
 export const profileEditAvatarButton = document.querySelector(
   "#profile-edit-avatar-button"
 );
+export const profileEditAvatarForm = document.forms["modal-edit-avatar-form"];
+
+export const confirmationForm = document.forms["modal-confirmation-form"];
+export const confirmationFormButton = document.querySelector(
+  "#confirmation-button"
+);
+
 // Validation
 
 export const validationConfig = {

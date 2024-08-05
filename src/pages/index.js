@@ -14,6 +14,10 @@ import {
   profileAddForm,
   validationConfig,
   profileEditAvatarButton,
+  profileEditAvatarForm,
+  profileEditForm,
+  confirmationFormButton,
+  confirmationForm,
 } from "../utils/constants.js";
 import "./index.css";
 import ModalWithConfirmation from "../components/ModalWithConfirmation.js";
@@ -84,6 +88,8 @@ function handleProfileFormSubmit(formData) {
     })
     .finally(() => {
       profileEditModalClass.setLoading(false, "Save");
+      profileEditForm.reset();
+      formValidators["modal-edit-form"].disableButton();
     });
 }
 
@@ -102,6 +108,8 @@ function handleProfileAvatar(formData) {
     })
     .finally(() => {
       profileEditAvatarModalClass.setLoading(false, "Save");
+      profileEditAvatarForm.reset();
+      formValidators["modal-edit-avatar-form"].disableButton();
     });
 }
 
@@ -114,13 +122,14 @@ function handleAddCardFormSubmit(obj) {
     .postCard(name, link)
     .then((card) => {
       sectionClass.addItem(card);
-      profileAddForm.reset();
     })
     .catch((error) => {
       console.error("Error fetching user info:", error);
     })
     .finally(() => {
       profileAddModalClass.setLoading(false, "Create");
+      profileAddForm.reset();
+      formValidators["modal-add-form"].disableButton();
     });
 }
 
@@ -130,11 +139,16 @@ function handleDeleteCard(card) {
   confirmationModalClass.setSubmitAction(() => {
     api
       .deleteCard(card._id)
-      .then((data) => {
+      .then(() => {
         card.handleDeleteButton();
       })
+
       .catch((error) => {
         console.error("Error fetching user info:", error);
+      })
+      .finally(() => {
+        confirmationForm.reset();
+        formValidators["modal-confirmation-form"].enableButton();
       });
   });
 }
@@ -143,12 +157,16 @@ function handleDeleteCard(card) {
 function handleLikeCard(card) {
   if (card._isLiked) {
     api.dislikeCard(card._id).then((data) => {
-      card.handleLikeButton(false);
+      card.handleLikeButton(false).catch((err) => {
+        console.error("Error fetching user info:", error);
+      });
     });
     //dislike
   } else {
     api.likeCard(card._id).then((data) => {
-      card.handleLikeButton(true);
+      card.handleLikeButton(true).catch((err) => {
+        console.error("Error fetching user info:", error);
+      });
     });
   }
 }

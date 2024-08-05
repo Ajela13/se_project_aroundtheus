@@ -52,7 +52,7 @@ export default class FormValidator {
 
   _toggleButtonState(inputList) {
     if (this._hasInvalidInput(inputList)) {
-      this._disableButton(this._buttonElement);
+      this.disableButton(this._buttonElement);
     } else {
       this._enableButton(this._buttonElement);
     }
@@ -78,13 +78,15 @@ export default class FormValidator {
   enableValidation() {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._formElement.reset();
-      if (this._formElement.querySelector("#confirmation-button")) {
-        this._enableButton();
-      } else {
-        this._disableButton();
-      }
     });
     this._setEventListener();
+  }
+
+  disableButton() {
+    this._disableButton();
+  }
+
+  enableButton() {
+    this._enableButton();
   }
 }
