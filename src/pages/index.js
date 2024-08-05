@@ -19,7 +19,11 @@ import "./index.css";
 import ModalWithConfirmation from "../components/ModalWithConfirmation.js";
 
 const api = new Api();
-const userInfoClass = new UserInfo("#profile-title", "#profile-description");
+const userInfoClass = new UserInfo(
+  "#profile-title",
+  "#profile-description",
+  "#profile-avatar"
+);
 const profileAddModalClass = new ModalWithForm(
   "#profile-add-modal",
   handleAddCardFormSubmit
@@ -42,7 +46,9 @@ api
   .getUserInfo()
   .then((data) => {
     userInfoClass.setUserInfo({ title: data.name, description: data.about });
-    console.log(data);
+    userInfoClass.setUserAvatar({
+      avatar: data.avatar,
+    });
     return data;
   })
   .catch((error) => {
@@ -59,7 +65,6 @@ api
       ".cards__list"
     );
     sectionClass.renderItems();
-    console.log(cardList);
   })
   .catch((error) => {
     console.error("Error fetching user info:", error);
@@ -67,12 +72,24 @@ api
 
 // PATCH API
 function handleProfileFormSubmit(formData) {
-  console.log(formData);
   api
     .updateProfileInfo(formData.title, formData.description)
     .then((data) => {
       userInfoClass.setUserInfo({ title: data.name, description: data.about });
-      console.log(data);
+      return data;
+    })
+    .catch((error) => {
+      console.error("Error fetching user info:", error);
+    });
+}
+
+function handleProfileAvatar(formData) {
+  api
+    .updateProfileAvatar(formData.avatar)
+    .then((data) => {
+      userInfoClass.setUserAvatar({
+        avatar: data.avatar,
+      });
       return data;
     })
     .catch((error) => {
@@ -89,16 +106,12 @@ function handleAddCardFormSubmit(obj) {
     .then((card) => {
       sectionClass.addItem(card);
       profileAddForm.reset();
-      console.log(card);
     })
     .catch((error) => {
       console.error("Error fetching user info:", error);
     });
 }
 
-function handleProfileAvatar() {
-  console.log("hedhje");
-}
 //DELETE API
 function handleDeleteCard(card) {
   confirmationModalClass.open();
@@ -107,7 +120,6 @@ function handleDeleteCard(card) {
       .deleteCard(card._id)
       .then((data) => {
         card.handleDeleteButton();
-        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching user info:", error);
@@ -117,20 +129,15 @@ function handleDeleteCard(card) {
 
 //PUT API / DELETE
 function handleLikeCard(card) {
-  console.log(card._isLiked);
   if (card._isLiked) {
     api.dislikeCard(card._id).then((data) => {
       card.handleLikeButton(false);
-      console.log(data);
     });
     //dislike
   } else {
     api.likeCard(card._id).then((data) => {
       card.handleLikeButton(true);
-      console.log(data);
     });
-
-    console.log("like it");
   }
 }
 
