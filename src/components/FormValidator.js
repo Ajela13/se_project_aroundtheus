@@ -79,7 +79,11 @@ export default class FormValidator {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._formElement.reset();
-      this._disableButton();
+      if (this._formElement.querySelector("#modal-confirmation-form")) {
+        this._enableButton();
+      } else {
+        this._disableButton();
+      }
     });
     this._setEventListener();
   }
