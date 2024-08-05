@@ -23,6 +23,7 @@
             <img
               src="<%=require('./images/jacques-cousteau.jpg')%>"
               alt="Avatar"
+              id="profile-avatar"
               class="profile__avatar"
             />
             <img
@@ -139,7 +140,7 @@
             class="form__input"
             id="profile-edit-avatar-link"
             type="url"
-            name="Image-link"
+            name="avatar"
             placeholder="Image link"
             required
           />
@@ -160,7 +161,9 @@
           Are you sure?
         </h2>
         <form class="modal__form form" name="modal-confirmation-form">
-          <button class="form__button" type="submit">Yes</button>
+          <button class="form__button" id="confirmation-button" type="submit">
+            Yes
+          </button>
         </form>
       </div>
     </div>
