@@ -83,6 +83,8 @@ function handleProfileFormSubmit(formData) {
     .then((data) => {
       userInfoClass.setUserInfo({ title: data.name, description: data.about });
       profileEditModalClass.close();
+      profileEditForm.reset();
+      formValidators["modal-edit-form"].disableButton();
 
       return data;
     })
@@ -91,8 +93,6 @@ function handleProfileFormSubmit(formData) {
     })
     .finally(() => {
       profileEditModalClass.setLoading(false, "Save");
-      profileEditForm.reset();
-      formValidators["modal-edit-form"].disableButton();
     });
 }
 
@@ -105,6 +105,8 @@ function handleProfileAvatar(formData) {
         avatar: data.avatar,
       });
       profileEditAvatarModalClass.close();
+      profileEditAvatarForm.reset();
+      formValidators["modal-edit-avatar-form"].disableButton();
       return data;
     })
     .catch((error) => {
@@ -112,8 +114,6 @@ function handleProfileAvatar(formData) {
     })
     .finally(() => {
       profileEditAvatarModalClass.setLoading(false, "Save");
-      profileEditAvatarForm.reset();
-      formValidators["modal-edit-avatar-form"].disableButton();
     });
 }
 
@@ -127,14 +127,14 @@ function handleAddCardFormSubmit(obj) {
     .then((card) => {
       sectionClass.addItem(card);
       profileAddModalClass.close();
+      profileAddForm.reset();
+      formValidators["modal-add-form"].disableButton();
     })
     .catch((error) => {
       console.error("Error fetching user info:", error);
     })
     .finally(() => {
       profileAddModalClass.setLoading(false, "Create");
-      profileAddForm.reset();
-      formValidators["modal-add-form"].disableButton();
     });
 }
 
@@ -147,14 +147,12 @@ function handleDeleteCard(card) {
       .then(() => {
         card.handleDeleteButton();
         confirmationModalClass.close();
+        confirmationForm.reset();
+        formValidators["modal-confirmation-form"].enableButton();
       })
 
       .catch((error) => {
         console.error("Error fetching user info:", error);
-      })
-      .finally(() => {
-        confirmationForm.reset();
-        formValidators["modal-confirmation-form"].enableButton();
       });
   });
 }
