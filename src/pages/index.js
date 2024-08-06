@@ -146,6 +146,7 @@ function handleDeleteCard(card) {
       .deleteCard(card._id)
       .then(() => {
         card.handleDeleteButton();
+        confirmationModalClass.close();
       })
 
       .catch((error) => {
