@@ -29,10 +29,8 @@ This project is made so all the elements are displayed correctly on popular scre
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
 
 **Images**
+I exported images directly from Figma for this project. To ensure optimal performance, I have optimized the images using [here](https://tinypng.com/), which helps the project load faster.
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
-
-![card content](./images/lago.jpg)
 
 **Plan of improving the project**
 
@@ -42,4 +40,3 @@ The way you'll do this at work is by exporting images directly from Figma — we
 
 -Design animations that provide clear and intuitive feedback to users when interacting with the like button.
 
-.Offer users the flexibility to customize animation preferences for image cards according to their preferences.
