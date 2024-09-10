@@ -1,4 +1,4 @@
-# Project 3: Around The U.S.
+# Project : Around The U.S.
 
 ### Overview
 
@@ -42,6 +42,8 @@ This project is a website where users can interact with pictures, manage their p
 **Images**
 
 I exported images directly from Figma for this project. To ensure optimal performance, I have optimized the images using [here](https://tinypng.com/), which helps the project load faster.
+
+![Preview](https://github.com/user-attachments/assets/55101091-aca4-43d8-9616-22d9e959cf13)
 
 
 
